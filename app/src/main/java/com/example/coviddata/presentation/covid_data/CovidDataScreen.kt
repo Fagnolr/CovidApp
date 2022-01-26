@@ -23,23 +23,28 @@ fun CovidDataScreen(
 ) {
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
-        state.covidData?.let { result ->
-            Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center) {
-                Row(horizontalArrangement = Arrangement.SpaceAround) {
-                    CovidCardItem(text = "Total Deaths", data = result.totalDeaths.toString())
-                    CovidCardItem(text = "Total Confirmed", data = result.totalConfirmed.toString())
-                }
-                Row() {
-                    CovidCardItem(text = "Total Recovered", data = result.totalRecovered.toString())
-                    CovidCardItem(text = "New Confirmed", data = result.newConfirmed.toString())
-                }
-                Row() {
-                    CovidCardItem(text = "New Deaths", data = result.newDeaths.toString())
-                    CovidCardItem(text = "New Recovered", data = result.newRecovered.toString())
-                }
-            }
+        state.covidData?.let { res ->
 
+            LazyVerticalGrid(modifier = Modifier.align(Alignment.Center) ,cells = GridCells.Fixed(2), contentPadding = PaddingValues(8.dp), content = {
+                item {
+                    CovidCardItem(text = "Total Deaths", data = res.totalDeaths.toString())
+                }
+                item {
+                    CovidCardItem(text = "Total Confirmed", data = res.totalConfirmed.toString())
+                }
+                item {
+                    CovidCardItem(text = "Total Recovered", data = res.totalRecovered.toString())
+                }
+                item {
+                    CovidCardItem(text = "New Confirmed", data = res.newConfirmed.toString())
+                }
+                item {
+                    CovidCardItem(text = "New Deaths", data = res.newDeaths.toString())
+                }
+                item {
+                    CovidCardItem(text = "New Recovered", data = res.newRecovered.toString())
+                }
+            } )
         }
         if(state.error.isNotBlank()) {
             Text(

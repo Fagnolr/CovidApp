@@ -13,11 +13,20 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CovidCardItem(
-    text : String,
-    data : String,
+    text: String,
+    data: String,
 ) {
-    Card(backgroundColor = Color.White, shape = RoundedCornerShape(10.dp), modifier = Modifier.padding(all = 8.dp)) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(all = 16.dp)) {
+    Card(
+        backgroundColor = Color.White,
+        shape = RoundedCornerShape(10.dp),
+        modifier = Modifier
+            .padding(all = 8.dp)
+            .height(100.dp)
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center, modifier = Modifier.padding(all = 16.dp)
+        ) {
             Text(text = text, style = MaterialTheme.typography.h4, color = Color.Black)
             Text(text = data, style = MaterialTheme.typography.h3, color = Color.Black)
         }
